@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
   g++ \
   make \
   openssl \
-  libssl-dev
+  libssl-dev \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://github.com/AGWA/git-crypt/archive/debian/$GIT_CRYPT_VERSION.tar.gz | tar zxv -C /var/tmp
 RUN cd /var/tmp/git-crypt-debian && make && make install PREFIX=/usr/local && rm -rf /var/tmp/git-crypt-debian
